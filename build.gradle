@@ -1,0 +1,64 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE'
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+task vaadinCompileThemes << {
+    def inDir = "src/main/resources"
+    def themesDir = "$inDir/VAADIN/themes/"
+    def outDir = "$buildDir/resources/main"
+    new File(themesDir).eachDir { themeDir ->
+        def scssName = "$themeDir/styles.scss"
+        if (new File(scssName).exists()) {
+            ant.java(className: 'com.vaadin.sass.SassCompiler', failOnError: true, fork: true) {
+                arg(line: scssName)
+                arg(line: "${themeDir.toString().replace(inDir,outDir)}/styles.css")
+                classpath {
+                    pathElement(path: configurations.compile.asPath)
+                }
+            }
+        }
+    }
+    ant.delete(dir:"$outDir/$themesDir", includes: "**/*.scss", verbose: true)
+}
+
+mainClassName = "app.Application"
+
+jar {
+    dependsOn vaadinCompileThemes
+    baseName = 'app'
+    // version = '0.1.0'
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+project.ext {
+    vaadinVersion =  "7.2.1"
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.+'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
+    compile "com.vaadin:vaadin-shared:${project.vaadinVersion}"
+    compile "com.vaadin:vaadin-server:${project.vaadinVersion}"
+    compile "com.vaadin:vaadin-client:${project.vaadinVersion}"
+    compile "com.vaadin:vaadin-themes:${project.vaadinVersion}"
+    compile "com.vaadin:vaadin-client-compiled:${project.vaadinVersion}"
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
+}
+

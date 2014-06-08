@@ -1,0 +1,18 @@
+server:
+  address: 127.0.0.1
+
+vaadin:
+  servlet:
+    # urlMapping: /app/*
+    params:
+      productionMode: true
+
+---
+
+spring:
+    profiles: dev
+
+vaadin:
+  servlet:
+    params:
+      productionMode: false

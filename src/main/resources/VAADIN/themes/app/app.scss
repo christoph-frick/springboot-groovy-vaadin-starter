@@ -1,0 +1,5 @@
+@import "../reindeer/reindeer.scss";
+
+@mixin app {
+  @include reindeer;
+}

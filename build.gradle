@@ -8,6 +8,7 @@ buildscript {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'codenarc'
 apply plugin: 'spring-boot'
 
 repositories {
@@ -48,6 +49,9 @@ jar {
 project.ext {
     vaadinVersion =  "7.2.1"
 }
+
+project.codenarc.toolVersion = '0.21'
+project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.+'

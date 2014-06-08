@@ -9,9 +9,9 @@ import org.springframework.context.annotation.ComponentScan
 @EnableAutoConfiguration
 @ComponentScan
 @CompileStatic
-public class Application extends SpringBootServletInitializer {
+class Application extends SpringBootServletInitializer {
 
-    public static void main(String[] args) throws Exception {
+    static void main(String[] args) throws Exception {
         def app = new SpringApplication(Application)
         app.showBanner = false
         app.run(args)

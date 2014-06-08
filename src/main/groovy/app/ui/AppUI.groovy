@@ -14,7 +14,7 @@ class AppUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        Label headline = new Label("Hello World")
+        Label headline = new Label('Hello World')
         headline.with{
             addStyleName('h1')
         }

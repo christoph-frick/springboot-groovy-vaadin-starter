@@ -46,22 +46,19 @@ jar {
     }
 }
 
-project.ext {
-    vaadinVersion =  "7.2.1"
-}
-
 project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
+    def vaadinVersion =  "7.2.2"
     compile 'org.codehaus.groovy:groovy-all:2.3.+'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
-    compile "com.vaadin:vaadin-shared:${project.vaadinVersion}"
-    compile "com.vaadin:vaadin-server:${project.vaadinVersion}"
-    compile "com.vaadin:vaadin-client:${project.vaadinVersion}"
-    compile "com.vaadin:vaadin-themes:${project.vaadinVersion}"
-    compile "com.vaadin:vaadin-client-compiled:${project.vaadinVersion}"
+    compile "com.vaadin:vaadin-shared:${vaadinVersion}"
+    compile "com.vaadin:vaadin-server:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client:${vaadinVersion}"
+    compile "com.vaadin:vaadin-themes:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
 }

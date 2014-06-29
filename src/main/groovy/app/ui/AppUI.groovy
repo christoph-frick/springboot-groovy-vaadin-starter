@@ -16,12 +16,12 @@ class AppUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final layout = new VerticalLayout()
+        def layout = new VerticalLayout()
         layout.setSpacing(true)
         layout.setMargin(true)
-        final headline = new Label('Hello World')
+        def headline = new Label('Hello World')
         headline.addStyleName('h1')
-        final button = new Button("more!", {
+        def button = new Button('more!', {
             layout.addComponent(new Label(new Date().toString()))
         } as Button.ClickListener)
         layout.addComponents(headline, button)

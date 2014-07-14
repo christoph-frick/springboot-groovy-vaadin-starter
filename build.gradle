@@ -50,7 +50,7 @@ project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
-    def vaadinVersion =  "7.2.3"
+    def vaadinVersion =  "7.2.4"
     compile 'org.codehaus.groovy:groovy-all:2.3.+'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'

@@ -22,7 +22,7 @@ repositories {
 }
 
 vaadin {
-	// widgetset 'app'
+	widgetset 'app'
 	vaadin.manageDependencies = false
 }
 
@@ -54,14 +54,17 @@ project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.+:indy'
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
     def vaadinVersion =  "7.2.4"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
-    compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
-    compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
+    // if no widgetset, use this {
+    // compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
+    // } else {
+    compile "com.vaadin:vaadin-client:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
+    // }
+    compile 'org.vaadin.addons:tokenfield:7.0.1'
 }
 

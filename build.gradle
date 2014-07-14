@@ -1,20 +1,34 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url 'http://maven.vaadin.com/vaadin-addons' }
     }
     dependencies {
+	classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'codenarc'
+apply plugin: 'vaadin'
+// apply from: 'http://plugins.jasoft.fi/vaadin.plugin'
 apply plugin: 'spring-boot'
 
 repositories {
     jcenter()
+    maven { url 'http://maven.vaadin.com/vaadin-addons' }
     mavenLocal()
 }
+
+vaadin {
+	// widgetset 'app'
+	vaadin.manageDependencies = false
+}
+
+project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources'
+bootRepackage.dependsOn = [jar] // restore the deps of spring-boot
+assemble.dependsOn = [bootRepackage, jar]
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -23,29 +37,10 @@ tasks.withType(GroovyCompile) {
 	groovyOptions.optimizationOptions.indy = true
 }
 
-task vaadinCompileThemes << {
-    def inDir = "src/main/resources"
-    def themesDir = "$inDir/VAADIN/themes/"
-    def outDir = "$buildDir/resources/main"
-    new File(themesDir).eachDir { themeDir ->
-        def scssName = "$themeDir/styles.scss"
-        if (new File(scssName).exists()) {
-            ant.java(className: 'com.vaadin.sass.SassCompiler', failOnError: true, fork: true) {
-                arg(line: scssName)
-                arg(line: "${themeDir.toString().replace(inDir,outDir)}/styles.css")
-                classpath {
-                    pathElement(path: configurations.compile.asPath)
-                }
-            }
-        }
-    }
-    ant.delete(dir:"$outDir/$themesDir", includes: "**/*.scss", verbose: true)
-}
-
 mainClassName = "app.Application"
 
 jar {
-    dependsOn vaadinCompileThemes
+    dependsOn vaadinCompileWidgetset, vaadinCompileThemes
     baseName = 'app'
     // version = '0.1.0'
     manifest {
@@ -57,16 +52,16 @@ project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
-    def vaadinVersion =  "7.2.4"
     compile 'org.codehaus.groovy:groovy-all:2.3.+:indy'
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
+    def vaadinVersion =  "7.2.4"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
-    compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
 }
 

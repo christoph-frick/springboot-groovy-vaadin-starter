@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
 	classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE'
     }
 }
 
@@ -48,6 +48,10 @@ jar {
     }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
+
 project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
@@ -57,7 +61,7 @@ dependencies {
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
-    def vaadinVersion =  "7.2.4"
+    def vaadinVersion =  "7.2.6"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"

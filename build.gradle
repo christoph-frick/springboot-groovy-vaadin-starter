@@ -30,12 +30,8 @@ project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resourc
 bootRepackage.dependsOn = [jar] // restore the deps of spring-boot
 assemble.dependsOn = [bootRepackage, jar]
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-tasks.withType(GroovyCompile) {
-	groovyOptions.optimizationOptions.indy = true
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 mainClassName = "app.Application"
 
@@ -56,7 +52,7 @@ project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.+:indy'
+    compile 'org.codehaus.groovy:groovy-all:2.3.+'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'

@@ -4,7 +4,7 @@ buildscript {
         maven { url 'http://maven.vaadin.com/vaadin-addons' }
     }
     dependencies {
-	classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
+        classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE'
     }
 }
@@ -12,7 +12,6 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: 'codenarc'
 apply plugin: 'vaadin'
-// apply from: 'http://plugins.jasoft.fi/vaadin.plugin'
 apply plugin: 'spring-boot'
 
 repositories {
@@ -22,10 +21,11 @@ repositories {
 }
 
 vaadin {
-	// widgetset 'app'
-	vaadin.manageDependencies = false
+	// widgetset 'app' // name of the used widgetset
+	vaadin.manageDependencies = false // we decide about the vaadin version and not the plugin
 }
 
+// some hoops to jump, to make spring-boot again dominant
 project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources'
 bootRepackage.dependsOn = [jar] // restore the deps of spring-boot
 assemble.dependsOn = [bootRepackage, jar]

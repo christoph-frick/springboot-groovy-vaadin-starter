@@ -58,6 +58,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'javax.validation:validation-api:1.1.0.Final'
     compile 'org.hibernate:hibernate-validator:5.1.1.Final'
+    compile 'org.spockframework:spock-core:0.7-groovy-2.0'
     compile "org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"

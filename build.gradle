@@ -21,16 +21,6 @@ repositories {
     mavenLocal()
 }
 
-vaadin {
-	widgetset 'app' // name of the used widgetset
-	vaadin.manageDependencies = false // we decide about the vaadin version and not the plugin
-}
-
-// some hoops to jump, to make spring-boot again dominant
-project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources'
-bootRepackage.dependsOn = [jar] // restore the deps of spring-boot
-assemble.dependsOn = [bootRepackage, jar]
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -45,6 +35,33 @@ jar {
     }
 }
 
+bootRun {
+	dependsOn vaadinCompileWidgetset, vaadinCompileThemes
+}
+
+vaadin {
+	vaadin.version = '7.3.+'
+	vaadin.debug = false
+	vaadin.manageRepositories = false // fails with gradle 2.1 and 0.8 of the plugin
+	widgetset jar.baseName
+}
+
+// some hoops to jump, to make spring-boot again dominant
+project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources/main'
+bootRepackage.dependsOn = [jar]
+assemble.dependsOn = [bootRepackage, jar]
+
+project.afterEvaluate {
+	jar {
+		into('lib') {
+			from configurations.vaadin
+		}
+	}
+	bootRun {
+		classpath += configurations.vaadin
+	}
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.1'
 }
@@ -53,24 +70,11 @@ project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
-    def vaadinVersion =  "7.3.0"
     def vaadin4springVersion = '0.0.3-SNAPSHOT'
     compile 'org.codehaus.groovy:groovy-all:2.3.+'
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
     compile "org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}"
-    compile "com.vaadin:vaadin-shared:${vaadinVersion}"
-    compile "com.vaadin:vaadin-server:${vaadinVersion}"
-    compile "com.vaadin:vaadin-push:${vaadinVersion}"
-    compile "com.vaadin:vaadin-client:${vaadinVersion}"
-    compile "com.vaadin:vaadin-themes:${vaadinVersion}"
-    // if no widgetset, use this {
-    compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
-    // } else {
-    compile "com.vaadin:vaadin-client:${vaadinVersion}"
-    compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
-    // }
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    // vaadin addons are put automatically into the widgetset 
+    // compile 'org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3'
 }
 

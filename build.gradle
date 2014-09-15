@@ -1,10 +1,9 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url 'http://maven.vaadin.com/vaadin-addons' }
     }
     dependencies {
-        classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
+        classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8.2'
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE'
     }
 }

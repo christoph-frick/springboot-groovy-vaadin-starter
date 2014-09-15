@@ -3,5 +3,7 @@
 /build/
 /classes/
 /*.iml
+/*.iws
+/*.ipr
 /.idea/
 /src/main/resources/**/*.gwt.xml

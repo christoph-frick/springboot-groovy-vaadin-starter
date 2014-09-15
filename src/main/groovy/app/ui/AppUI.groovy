@@ -21,10 +21,13 @@ class AppUI extends UI {
         layout.setMargin(true)
         def headline = new Label('Hello World')
         headline.addStyleName('h1')
+        layout.addComponent(headline)
+        // def editor = new org.vaadin.openesignforms.ckeditor.CKEditorTextField()
+        // layout.addComponent(editor)
         def button = new Button('more!', {
             layout.addComponent(new Label(new Date().toString()))
         } as Button.ClickListener)
-        layout.addComponents(headline, button)
+        layout.addComponents(button)
         setContent(layout)
     }
 

@@ -6,6 +6,7 @@ vaadin:
     # urlMapping: /app/*
     params:
       productionMode: true
+      widgetset: 'app'
 
 ---
 
@@ -16,3 +17,4 @@ vaadin:
   servlet:
     params:
       productionMode: false
+      widgetset: 'app'

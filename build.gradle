@@ -61,6 +61,7 @@ dependencies {
     compile "org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
+    compile "com.vaadin:vaadin-push:${vaadinVersion}"
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"

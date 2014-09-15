@@ -46,7 +46,7 @@ jar {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '2.1'
 }
 
 project.codenarc.toolVersion = '0.21'

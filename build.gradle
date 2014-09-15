@@ -4,15 +4,14 @@ buildscript {
         maven { url 'http://maven.vaadin.com/vaadin-addons' }
     }
     dependencies {
-	classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE'
+        classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.8'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE'
     }
 }
 
 apply plugin: 'groovy'
 apply plugin: 'codenarc'
 apply plugin: 'vaadin'
-// apply from: 'http://plugins.jasoft.fi/vaadin.plugin'
 apply plugin: 'spring-boot'
 
 repositories {
@@ -22,20 +21,17 @@ repositories {
 }
 
 vaadin {
-	widgetset 'app'
-	vaadin.manageDependencies = false
+	widgetset 'app' // name of the used widgetset
+	vaadin.manageDependencies = false // we decide about the vaadin version and not the plugin
 }
 
+// some hoops to jump, to make spring-boot again dominant
 project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources'
 bootRepackage.dependsOn = [jar] // restore the deps of spring-boot
 assemble.dependsOn = [bootRepackage, jar]
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-tasks.withType(GroovyCompile) {
-	groovyOptions.optimizationOptions.indy = true
-}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 mainClassName = "app.Application"
 
@@ -48,23 +44,32 @@ jar {
     }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
 project.codenarc.toolVersion = '0.21'
 project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.+:indy'
+    def vaadinVersion =  "7.3.0"
+    def vaadin4springVersion = '0.0.3-SNAPSHOT'
+    compile 'org.codehaus.groovy:groovy-all:2.3.+'
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.vaadin.spring:spring-boot-vaadin:0.0.2-SNAPSHOT'
-    def vaadinVersion =  "7.2.4"
+    compile 'javax.validation:validation-api:1.1.0.Final'
+    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
+    compile "org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}"
     compile "com.vaadin:vaadin-shared:${vaadinVersion}"
     compile "com.vaadin:vaadin-server:${vaadinVersion}"
+    compile "com.vaadin:vaadin-push:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-themes:${vaadinVersion}"
     // if no widgetset, use this {
-    // compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
+    compile "com.vaadin:vaadin-client-compiled:${vaadinVersion}"
     // } else {
     compile "com.vaadin:vaadin-client:${vaadinVersion}"
     compile "com.vaadin:vaadin-client-compiler:${vaadinVersion}"
     // }
-    compile 'org.vaadin.addons:tokenfield:7.0.1'
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 

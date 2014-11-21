@@ -1,10 +1,8 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
+    repositories.jcenter()
     dependencies {
         classpath 'fi.jasoft.plugin:gradle-vaadin-plugin:0.9.2'
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE'
     }
 }
 
@@ -73,6 +71,7 @@ project.codenarc {
 dependencies {
     def vaadin4springVersion = '0.0.2.1'
     compile 'org.codehaus.groovy:groovy-all:2.3.+'
+    compile 'org.springframework.boot:spring-boot-starter-web'
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group:'com.vaadin' }
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     // vaadin addons are put automatically into the widgetset 

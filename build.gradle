@@ -65,8 +65,10 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.2'
 }
 
-project.codenarc.toolVersion = '0.21'
-project.codenarc.configFile = new File('config/codenarc/ruleset.groovy')
+project.codenarc {
+	toolVersion = '0.22'
+	configFile = new File('config/codenarc/ruleset.groovy')
+}
 
 dependencies {
     def vaadin4springVersion = '0.0.2.1'

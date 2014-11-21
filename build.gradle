@@ -62,7 +62,7 @@ project.afterEvaluate {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+    gradleVersion = '2.2'
 }
 
 project.codenarc.toolVersion = '0.21'

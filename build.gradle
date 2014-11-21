@@ -78,6 +78,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
+    compile('org.peimari:maddon:1.17') { exclude group: 'com.vaadin' }
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }

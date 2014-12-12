@@ -14,9 +14,9 @@ This uses by default:
 
  - `Spring Boot <https://github.com/spring-projects/spring-boot>`_ (for ``bootRun`` and ``jar`` capabilities
 
- - `Vaadin4Spring <https://github.com/peholmst/vaadin4spring>`_ (to make Spring and Vaadin play togehter)
+ - `Vaadin4Spring <https://github.com/peholmst/vaadin4spring>`_ (to make Spring and Vaadin play together)
 
- - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ (for style and widget set compilation)
+ - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ (for style and widgetset compilation)
 
  - `Spock <https://github.com/spockframework/spock>`_ for tests
 

@@ -46,3 +46,28 @@ Checking the starter out into directory ``app`` and get rid of the origin.
    git clone https://github.com/christoph-frick/springboot-groovy-vaadin-starter app
    cd app
    git remote rm origin
+
+
+Code Tour
+---------
+
+:``build.gradle``: Versions and general setup of the project. (Sadly) contains
+                   some black magic (annotated with comments) to make the
+                   different Gradle plugins play nicely together.  Add Vaadin
+                   widgets/addons to the ``dependencies`` and be sure to
+                   exclude their transitive dependencies (see example there).
+
+:``config/codenarc/ruleset.groovy``: Default ruleset with few commented rules
+                                     resulting in errors.
+
+:``src/main/groovy/app/Application.groovy``: ``main`` and Spring Boot setup
+
+:``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme set.
+
+:``src/main/resources/VAADIN/themes/app/``: The theme
+
+:``src/main/resources/application.yaml``: Application config and Spring
+                                          profile ``dev`` defined.
+
+:``src/main/resources/logback.xml``: Default logging with package ``app`` set
+                                     to ``DEBUG``

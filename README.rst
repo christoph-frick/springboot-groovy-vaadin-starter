@@ -23,6 +23,19 @@ This uses by default:
  - `CodeNarc <https://github.com/CodeNarc/CodeNarc>`_ to ensure code quality
 
 
+About
+=====
+
+Like many other starters or bootstraps, this project makes some assumptions,
+what is needed and where it is.  The focus is to have an easy way to build web
+apps using newest Vaadin 7.3 and Groovy 2.3 on Java 8, run it for development
+and build a fat jar for deployment. It configures a theme and a widgetset
+right away (both named ``app``).  The theme derives from Valo. New widgets get
+picked up automatically for widgetset compilation.  There is a spring profile
+named ``dev`` to gather configs (like to tell Vaadin, it is not in production
+mode) for development.
+
+
 Usage
 -----
 

@@ -8,6 +8,11 @@ vaadin:
       productionMode: true
       widgetset: 'app'
 
+spring:
+  groovy:
+    template:
+      check-template-location: false
+
 ---
 
 spring:

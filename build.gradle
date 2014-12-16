@@ -54,6 +54,9 @@ vaadin {
 bootRepackage.dependsOn = [jar]
 assemble.dependsOn = [bootRepackage, jar]
 
+// pass sysprops down to bootRun, so we can add them in configs in intellij
+bootRun.systemProperties = System.properties
+
 project.afterEvaluate {
 	jar {
 		into('lib') {

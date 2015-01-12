@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.9.2'
-        springBootVersion = '1.2.0.RELEASE'
+        gradleVaadinPluginVersion = '0.9.6'
+        springBootVersion = '1.2.1.RELEASE'
     }
     repositories.jcenter()
     dependencies {
@@ -14,9 +14,6 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'groovy'
 apply plugin: 'codenarc'
-// must be changed before the gradle plugin, to make clean/vaadinCompileWidgetset play together
-apply plugin: 'war'
-project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources/main'
 apply plugin: 'fi.jasoft.plugin.vaadin'
 apply plugin: 'spring-boot'
 
@@ -48,11 +45,13 @@ vaadin {
 	vaadin.debug = false
 	vaadin.manageRepositories = false // fails with gradle 2.1 and 0.8 of the plugin
 	widgetset jar.baseName
+	vaadin.plugin.themesDirectory = 'build/resources/main/VAADIN/themes'
 }
 
 // some hoops to jump, to make spring-boot again dominant
 bootRepackage.dependsOn = [jar]
 assemble.dependsOn = [bootRepackage, jar]
+project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources/main'
 
 // pass sysprops down to bootRun, so we can add them in configs in intellij
 bootRun.systemProperties = System.properties
@@ -82,7 +81,7 @@ project.codenarc {
 }
 
 dependencies {
-    def vaadin4springVersion = '0.0.2.1'
+    def vaadin4springVersion = '0.0.3'
     compile 'org.codehaus.groovy:groovy-all:2.3.+'
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps

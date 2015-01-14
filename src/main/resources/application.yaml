@@ -1,3 +1,11 @@
+# production defaults
+# see the `dev` profile below for development
+
+app:
+  vaadin:
+    widgetset: 'app'
+    productionMode: "true" # must be string!
+
 server:
   address: 127.0.0.1
 
@@ -5,13 +13,13 @@ vaadin:
   servlet:
     # urlMapping: /app/*
     params:
-      productionMode: true
-      widgetset: 'app'
+      productionMode: "${app.vaadin.productionMode}"
+      widgetset: "${app.vaadin.widgetset}"
   # see https://github.com/peholmst/vaadin4spring/issues/108#issuecomment-69953039
   static:
     servlet:
       params:
-        productionMode: true
+        productionMode: "${app.vaadin.productionMode}"
 
 spring:
   groovy:
@@ -23,13 +31,7 @@ spring:
 spring:
     profiles: dev
 
-vaadin:
-  servlet:
-    params:
-      productionMode: false
-      widgetset: 'app'
-  # see https://github.com/peholmst/vaadin4spring/issues/108#issuecomment-69953039
-  static:
-    servlet:
-      params:
-        productionMode: false
+app:
+  vaadin:
+    productionMode: "false" # must be string
+

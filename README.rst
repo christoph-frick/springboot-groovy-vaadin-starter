@@ -46,6 +46,8 @@ Checking the starter out into directory ``app`` and get rid of the origin.
    git clone https://github.com/christoph-frick/springboot-groovy-vaadin-starter app
    cd app
    git remote rm origin
+   ./gradlew bootRun
+   # check http://localhost:8080
 
 
 Code Tour

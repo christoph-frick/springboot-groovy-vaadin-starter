@@ -41,8 +41,9 @@ bootRun {
 }
 
 vaadin {
-	vaadin.version = '7.3.+'
+	vaadin.version = '7.4.0.beta3'
 	vaadin.debug = false
+	vaadin.manageWidgetset = false
 	vaadin.manageRepositories = false // fails with gradle 2.1 and 0.8 of the plugin
 	widgetset jar.baseName
 	vaadin.plugin.themesDirectory = 'build/resources/main/VAADIN/themes'

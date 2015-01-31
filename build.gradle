@@ -72,7 +72,7 @@ project.afterEvaluate {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+    gradleVersion = '2.2.1'
 }
 
 project.codenarc {
@@ -81,12 +81,12 @@ project.codenarc {
 }
 
 dependencies {
-    def vaadin4springVersion = '0.0.3'
-    compile 'org.codehaus.groovy:groovy-all:2.3.+'
+    def vaadin4springVersion = '0.0.3.2'
+    compile 'org.codehaus.groovy:groovy-all:2.4.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
-    compile('org.peimari:maddon:1.17') { exclude group: 'com.vaadin' }
+    compile('org.vaadin:viritin:1.25') { exclude group: 'com.vaadin' }
     testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }

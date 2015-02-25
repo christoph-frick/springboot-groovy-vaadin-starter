@@ -74,7 +74,8 @@ Code Tour
                    some black magic (annotated with comments) to make the
                    different Gradle plugins play nicely together.  Add Vaadin
                    widgets/addons to the ``dependencies`` and be sure to
-                   exclude their transitive dependencies (see example there).
+                   exclude their transitive dependencies (see example there),
+                   then add them to the widgetset.
 
 :``config/codenarc/ruleset.groovy``: Default ruleset with few commented rules
                                      resulting in errors.
@@ -87,6 +88,10 @@ Code Tour
 
 :``src/main/resources/application.yaml``: Application config and Spring
                                           profile ``dev`` defined.
+
+:``src/main/resources/app.gwt.xml``: The widgetset (use the same name as in
+                                     the ``build.gradle`` and the
+                                     ``application.yaml``).
 
 :``src/main/resources/logback.xml``: Default logging with package ``app`` set
                                      to ``DEBUG``

@@ -6,8 +6,11 @@ import com.vaadin.ui.Button
 import com.vaadin.ui.Label
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
+import com.vaadin.ui.themes.ValoTheme
 import groovy.transform.CompileStatic
 import org.vaadin.spring.annotation.VaadinUI
+
+import java.time.Instant
 
 @VaadinUI
 @Theme('app')
@@ -16,18 +19,24 @@ class AppUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        def layout = new VerticalLayout()
-        layout.setSpacing(true)
-        layout.setMargin(true)
-        def headline = new Label('Hello World')
-        headline.addStyleName('h1')
-        layout.addComponent(headline)
+        def layout = new VerticalLayout().with{
+            setSpacing(true)
+            setMargin(true)
+            it
+        }
+
+        layout.addComponent(new Label('Hello Vaadin').with{
+            setStyleName(ValoTheme.LABEL_H1)
+            it
+        })
+
         // def editor = new org.vaadin.openesignforms.ckeditor.CKEditorTextField()
         // layout.addComponent(editor)
-        def button = new Button('more!', {
-            layout.addComponent(new Label(new Date().toString()))
-        } as Button.ClickListener)
-        layout.addComponents(button)
+
+        layout.addComponents(new Button('Click for time', {
+            layout.addComponent(new Label("The time on server is ${Instant.now()}"))
+        } as Button.ClickListener))
+
         setContent(layout)
     }
 

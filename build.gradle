@@ -2,11 +2,13 @@ buildscript {
     ext {
         gradleVaadinPluginVersion = '0.9.7'
         springBootVersion = '1.2.1.RELEASE'
+        springLoadedVersion = '1.2.1.RELEASE'
     }
     repositories.jcenter()
     dependencies {
         classpath "fi.jasoft.plugin:gradle-vaadin-plugin:$gradleVaadinPluginVersion"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath "org.springframework:springloaded:$springLoadedVersion"
     }
 }
 

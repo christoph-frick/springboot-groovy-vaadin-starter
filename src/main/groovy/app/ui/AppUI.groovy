@@ -1,5 +1,4 @@
 package app.ui
-
 import com.vaadin.annotations.Theme
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.Button
@@ -7,14 +6,12 @@ import com.vaadin.ui.Label
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
-import groovy.transform.CompileStatic
 import org.vaadin.spring.annotation.VaadinUI
 
 import java.time.Instant
 
 @VaadinUI
 @Theme('app')
-@CompileStatic
 class AppUI extends UI {
 
     @Override

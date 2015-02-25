@@ -28,6 +28,10 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+compileGroovy {
+	groovyOptions.configurationScript = file("gradle/groovyOptions.groovy")
+}
+
 mainClassName = "app.Application"
 
 jar {

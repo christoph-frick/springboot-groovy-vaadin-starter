@@ -49,6 +49,23 @@ Checking the starter out into directory ``app`` and get rid of the origin.
    ./gradlew bootRun
    # check http://localhost:8080
 
+If you are running IntelliJ IDEA, you can create the projects files with:
+
+.. code:: sh
+
+   ./gradlew idea
+
+This sets up a ``.ipr`` file you can open with IDEA.
+
+The created project has some additional configurations.  First the default for the
+version control is ``git``.  Second the Gradle settings are already
+added/changed to use the wrapper.  Third there are two configurations setup up
+to run and reload the project.
+
+This this is using ``springloaded`` to handle the reloading of live changes.
+If you run *run dev* in debug mode you can then simply run *reload* to update
+changes to the running process.
+
 
 Code Tour
 ---------

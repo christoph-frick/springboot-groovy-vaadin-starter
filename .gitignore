@@ -1,5 +1,5 @@
 /.gradle/
-/gradle/
+/gradle/wrapper/
 /build/
 /classes/
 /*.iml

@@ -1,7 +1,7 @@
 idea {
 	project.ipr {
-		// enable git by default
 		withXml { provider ->
+			// enable git by default
 			provider.node
 				.component
 				.find { it.@name == 'VcsDirectoryMappings' }

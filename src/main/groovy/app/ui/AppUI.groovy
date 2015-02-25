@@ -7,7 +7,7 @@ import com.vaadin.ui.Label
 import com.vaadin.ui.UI
 import com.vaadin.ui.VerticalLayout
 import groovy.transform.CompileStatic
-import org.vaadin.spring.VaadinUI
+import org.vaadin.spring.annotation.VaadinUI
 
 @VaadinUI
 @Theme('app')

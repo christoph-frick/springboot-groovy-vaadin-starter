@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.9.6'
+        gradleVaadinPluginVersion = '0.9.7'
         springBootVersion = '1.2.1.RELEASE'
     }
     repositories.jcenter()
@@ -41,7 +41,7 @@ bootRun {
 }
 
 vaadin {
-	vaadin.version = '7.4.0.rc1'
+	vaadin.version = '7.4.0'
 	vaadin.debug = false
 	vaadin.manageWidgetset = false
 	vaadin.manageRepositories = false // fails with gradle 2.1 and 0.8 of the plugin
@@ -73,7 +73,7 @@ project.afterEvaluate {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+    gradleVersion = '2.3'
 }
 
 project.codenarc {
@@ -82,8 +82,8 @@ project.codenarc {
 }
 
 dependencies {
-    def vaadin4springVersion = '0.0.3.2'
-    compile 'org.codehaus.groovy:groovy-all:2.4.0'
+    def vaadin4springVersion = '0.0.4.RELEASE'
+    compile 'org.codehaus.groovy:groovy-all:2.4.1'
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }

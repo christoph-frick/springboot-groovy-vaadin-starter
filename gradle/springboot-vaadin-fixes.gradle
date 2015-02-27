@@ -1,0 +1,52 @@
+//
+// vaadin plugin configs
+// 
+vaadin {
+	// debug is managed by vaadin4spring
+	vaadin.debug = false
+	// in 0.9.6 (fixed in 0.9.7) vaadin 7.4 made problems due to opera target
+	vaadin.manageWidgetset = false
+	// we manage repos ourself (failed with gradle 2.1 and 0.8 of the plugin)
+	vaadin.manageRepositories = false
+	// bend the directory to compile the themes into the build dir
+	vaadin.plugin.themesDirectory = 'build/resources/main/VAADIN/themes'
+}
+
+// bend the name for the generated files into the build dir
+project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources/main'
+
+//
+// springboot plugin configs
+//
+
+// pull in vaadin tasks several of the springboot tasks shall depend on
+jar {
+	dependsOn vaadinCompileWidgetset, vaadinCompileThemes
+}
+bootRun {
+	dependsOn vaadinCompileWidgetset, vaadinCompileThemes
+}
+bootRepackage.dependsOn = [jar]
+assemble.dependsOn = [bootRepackage, jar]
+
+// pass sysprops down to bootRun, so we can add them in configs in intellij
+bootRun.systemProperties = System.properties
+
+// must be done last, so both plugins setup their stuff already
+project.afterEvaluate {
+	// get the runtime vaadin libs into the jar
+	jar {
+		into('lib') {
+			from configurations.vaadin
+		}
+	}
+	// pickup the runtime vaadin libs for bootRun
+	bootRun {
+		classpath += configurations.vaadin
+	}
+	// exclude spring here, due to the dep to javax validation 1.1
+	configurations.'vaadin-client' {
+		exclude module: 'spring-boot-starter-web'
+	}
+}
+

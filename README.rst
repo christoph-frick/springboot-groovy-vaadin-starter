@@ -28,12 +28,14 @@ About
 
 Like many other starters or bootstraps, this project makes some assumptions,
 what is needed and where it is.  The focus is to have an easy way to build web
-apps using newest Vaadin 7.3 and Groovy 2.3 on Java 8, run it for development
-and build a fat jar for deployment. It configures a theme and a widgetset
-right away (both named ``app``).  The theme derives from Valo. New widgets get
-picked up automatically for widgetset compilation.  There is a spring profile
-named ``dev`` to gather configs (like to tell Vaadin, it is not in production
-mode) for development.
+apps using newest Vaadin 7.4 and Groovy 2.4 on Java 8, run it for development
+and build a fat jar for deployment (yet development started with earlier
+version and it is most likely that in general Vaadin 7, Groovy 2, and also
+Java 7 would work).
+
+It configures a theme and a widgetset right away (both named ``app``).  The
+theme derives from Valo. There is a spring profile named ``dev`` to gather
+configs (like to tell Vaadin, it is not in production mode) for development.
 
 
 Usage
@@ -45,7 +47,8 @@ Checking the starter out into directory ``app`` and get rid of the origin.
 
    git clone https://github.com/christoph-frick/springboot-groovy-vaadin-starter app
    cd app
-   git remote rm origin
+   # git remote rm origin # get rid of the origin so you can add your own
+   # git reset $(git commit-tree HEAD^{tree} -m "bootstrap") # squash all commits into one
    ./gradlew bootRun
    # check http://localhost:8080
 
@@ -64,7 +67,8 @@ to run and reload the project.
 
 This this is using ``springloaded`` to handle the reloading of live changes.
 If you run *run dev* in debug mode you can then simply run *reload* to update
-changes to the running process.
+changes to the running process, while keeping the container running as long as
+possible.
 
 
 Code Tour

@@ -70,12 +70,19 @@ changes to the running process.
 Code Tour
 ---------
 
-:``build.gradle``: Versions and general setup of the project. (Sadly) contains
-                   some black magic (annotated with comments) to make the
-                   different Gradle plugins play nicely together.  Add Vaadin
+:``build.gradle``: Versions and general setup of the project.  Add Vaadin
                    widgets/addons to the ``dependencies`` and be sure to
                    exclude their transitive dependencies (see example there),
-                   then add them to the widgetset.
+                   then add them to the widgetset (the ``*.gwt.xml`` file).
+
+:``gradle/groovyOptions.groovy``: Default config for the groovy compiler.
+                                  ``@CompileStatic`` is enabled by default.
+
+:``gradle/springboot-vaadin-fixes.gradle``: All configs to make both the
+                                            Springboot and the Vaadin Gradle
+                                            plug-in play nicely together.
+
+:``gradle/idea.gradle``: Config for the IDEA project (see above)
 
 :``config/codenarc/ruleset.groovy``: Default ruleset with few commented rules
                                      resulting in errors.

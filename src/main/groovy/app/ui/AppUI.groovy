@@ -1,4 +1,5 @@
 package app.ui
+
 import com.vaadin.annotations.Theme
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.Button
@@ -16,13 +17,13 @@ class AppUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        def layout = new VerticalLayout().with{
+        def layout = new VerticalLayout().with {
             setSpacing(true)
             setMargin(true)
             it
         }
 
-        layout.addComponent(new Label('Hello Vaadin').with{
+        layout.addComponent(new Label('Hello Vaadin').with {
             setStyleName(ValoTheme.LABEL_H1)
             it
         })

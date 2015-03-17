@@ -1,7 +1,7 @@
 buildscript {
     ext {
         gradleVaadinPluginVersion = '0.9.7'
-        springBootVersion = '1.2.1.RELEASE'
+        springBootVersion = '1.2.2.RELEASE'
         springLoadedVersion = '1.2.1.RELEASE'
     }
     repositories.jcenter()
@@ -44,7 +44,7 @@ jar {
 }
 
 vaadin {
-	vaadin.version = '7.4.0'
+	vaadin.version = '7.4.1'
 	widgetset jar.baseName
 }
 
@@ -58,13 +58,13 @@ project.codenarc {
 }
 
 dependencies {
-    def vaadin4springVersion = '0.0.4.RELEASE'
+    def vaadin4springVersion = '0.0.5.RELEASE'
     compile 'org.codehaus.groovy:groovy-all:2.4.1'
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
     compile('org.vaadin:viritin:1.25') { exclude group: 'com.vaadin' }
-    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
 }

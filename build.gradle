@@ -18,6 +18,7 @@ ext {
         gradleWrapperVersion = '2.3'
         vaadinVersion = '7.4.2'
         vaadin4springVersion = '0.0.5.RELEASE'
+	viritinVersion = '1.30'
 	codenarcVersion = '0.22'
 	spockVersion = '1.0-groovy-2.4'
     }
@@ -73,7 +74,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
-    compile('org.vaadin:viritin:1.25') { exclude group: 'com.vaadin' }
+    compile("org.vaadin:viritin:${viritinVersion}") { exclude group: 'com.vaadin' }
     testCompile "org.spockframework:spock-core:${spockVersion}"
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }

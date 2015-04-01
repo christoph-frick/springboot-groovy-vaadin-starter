@@ -46,7 +46,8 @@ project.afterEvaluate {
 	}
 	// exclude spring here, due to the dep to javax validation 1.1
 	configurations.'vaadin-client' {
-		exclude module: 'spring-boot-starter-web'
+	        // exclude javax validation 1.1
+		resolutionStrategy.force "javax.validation:validation-api:1.0.0.GA"
 	}
 }
 

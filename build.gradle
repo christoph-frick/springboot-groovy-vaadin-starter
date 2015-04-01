@@ -12,6 +12,17 @@ buildscript {
     }
 }
 
+ext {
+    ext {
+        groovyVersion = '2.4.3'
+        gradleWrapperVersion = '2.3'
+        vaadinVersion = '7.4.2'
+        vaadin4springVersion = '0.0.5.RELEASE'
+	codenarcVersion = '0.22'
+	spockVersion = '1.0-groovy-2.4'
+    }
+}
+
 apply plugin: 'idea'
 apply from: 'gradle/idea.gradle'
 apply plugin: 'eclipse'
@@ -44,27 +55,26 @@ jar {
 }
 
 vaadin {
-	vaadin.version = '7.4.2'
+	vaadin.version = vaadinVersion
 	widgetset jar.baseName
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = gradleWrapperVersion
 }
 
 project.codenarc {
-	toolVersion = '0.22'
+	toolVersion = codenarcVersion
 	configFile = new File('config/codenarc/ruleset.groovy')
 }
 
 dependencies {
-    def vaadin4springVersion = '0.0.5.RELEASE'
-    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
     compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
     compile('org.vaadin:viritin:1.25') { exclude group: 'com.vaadin' }
-    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile "org.spockframework:spock-core:${spockVersion}"
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
 }

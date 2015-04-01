@@ -1,13 +1,12 @@
 package app.ui
-
 import com.vaadin.annotations.Theme
 import com.vaadin.server.VaadinRequest
 import com.vaadin.ui.Button
 import com.vaadin.ui.Label
 import com.vaadin.ui.UI
-import com.vaadin.ui.VerticalLayout
 import com.vaadin.ui.themes.ValoTheme
 import org.vaadin.spring.annotation.VaadinUI
+import org.vaadin.viritin.layouts.MVerticalLayout
 
 import java.time.Instant
 
@@ -17,11 +16,7 @@ class AppUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        def layout = new VerticalLayout().with {
-            setSpacing(true)
-            setMargin(true)
-            it
-        }
+        def layout = new MVerticalLayout().withSpacing(true).withMargin(true)
 
         layout.addComponent(new Label('Hello Vaadin').with {
             setStyleName(ValoTheme.LABEL_H1)

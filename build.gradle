@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.9.7'
+        gradleVaadinPluginVersion = '0.9.8'
         springBootVersion = '1.2.3.RELEASE'
         springLoadedVersion = '1.2.3.RELEASE'
     }
@@ -80,3 +80,12 @@ dependencies {
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
 }
 
+// Exclude all deps, that pull in newer versions of the critical libraries for
+// widgetset compilation here (e.g. validation-api).  If there are errors
+// building the widgetset, check with `./gradlew dependencies` first.
+configurations {
+	'vaadin-client' {
+		exclude module: 'spring-boot-starter-web'
+		exclude module: 'spring-boot-vaadin'
+	}
+}

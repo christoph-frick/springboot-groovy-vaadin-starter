@@ -5,3 +5,5 @@
 /*.iws
 /*.ipr
 /.idea/
+/.nb-gradle-properties
+/.nb-gradle/

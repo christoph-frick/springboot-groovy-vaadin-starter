@@ -28,7 +28,7 @@
 			</option>
 			<option name="taskNames">
 				<list>
-					<option value="compileGroovy" />
+					<option value="classes" />
 				</list>
 			</option>
 			<option name="vmOptions" value="" />

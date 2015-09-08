@@ -9,11 +9,10 @@ vaadin {
 	// we manage repos ourself (failed with gradle 2.1 and 0.8 of the plugin)
 	vaadin.manageRepositories = false
 	// bend the directory to compile the themes into the build dir
-	vaadin.plugin.themesDirectory = 'build/resources/main/VAADIN/themes'
+	vaadin.plugin.themesDirectory = 'build/resources/main/VAADIN/themes/'
+	// bend the directory to compile the widgetset into the build dir
+	vaadin.gwt.outputDirectory = file('build/resources/main/')
 }
-
-// bend the name for the generated files into the build dir
-project.convention.getPlugin(WarPluginConvention).webAppDirName = 'build/resources/main'
 
 //
 // springboot plugin configs

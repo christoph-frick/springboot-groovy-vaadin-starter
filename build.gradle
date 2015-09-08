@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.9.8'
-        springBootVersion = '1.2.3.RELEASE'
-        springLoadedVersion = '1.2.3.RELEASE'
+        gradleVaadinPluginVersion = '0.10.1'
+        springBootVersion = '1.2.5.RELEASE'
+        springLoadedVersion = '1.2.4.RELEASE'
     }
     repositories.jcenter()
     dependencies {
@@ -14,9 +14,9 @@ buildscript {
 
 ext {
     ext {
-        groovyVersion = '2.4.3'
-        gradleWrapperVersion = '2.4'
-        vaadinVersion = '7.4.7'
+        groovyVersion = '2.4.4'
+        gradleWrapperVersion = '2.6'
+        vaadinVersion = '7.5.5'
         vaadin4springVersion = '0.0.5.RELEASE'
         viritinVersion = '1.33'
         codenarcVersion = '0.23'

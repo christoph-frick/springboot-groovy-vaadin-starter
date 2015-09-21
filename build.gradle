@@ -1,7 +1,7 @@
 buildscript {
     ext {
         gradleVaadinPluginVersion = '0.10.1'
-        springBootVersion = '1.2.5.RELEASE'
+        springBootVersion = '1.2.6.RELEASE'
         springLoadedVersion = '1.2.4.RELEASE'
     }
     repositories.jcenter()

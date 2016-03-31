@@ -12,11 +12,11 @@ This uses by default:
 
  - `Vaadin <https://github.com/vaadin/vaadin>`_ for the web GUI
 
- - `Spring Boot <https://github.com/spring-projects/spring-boot>`_ (for ``bootRun`` and ``jar`` capabilities
+ - `Spring Boot <https://github.com/spring-projects/spring-boot>`_ for ``bootRun`` and ``jar`` capabilities
 
- - `Vaadin4Spring <https://github.com/peholmst/vaadin4spring>`_ (to make Spring and Vaadin play together)
+ - `Vaadin4Spring <https://github.com/peholmst/vaadin4spring>`_ to make Spring and Vaadin play together
 
- - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ (for style and widgetset compilation)
+ - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ for style and widgetset compilation
 
  - `Spock <https://github.com/spockframework/spock>`_ for tests
 

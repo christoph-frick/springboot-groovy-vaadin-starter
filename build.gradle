@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.10.2'
-        springBootVersion = '1.2.7.RELEASE'
-        springLoadedVersion = '1.2.4.RELEASE'
+        gradleVaadinPluginVersion = '0.10.7'
+        springBootVersion = '1.3.3.RELEASE'
+        springLoadedVersion = '1.2.5.RELEASE'
     }
     repositories.jcenter()
     dependencies {
@@ -14,12 +14,12 @@ buildscript {
 
 ext {
     ext {
-        groovyVersion = '2.4.5'
-        gradleWrapperVersion = '2.8'
-        vaadinVersion = '7.5.8'
+        groovyVersion = '2.4.6'
+        gradleWrapperVersion = '2.12'
+        vaadinVersion = '7.6.4'
         vaadin4springVersion = '0.0.5.RELEASE'
         viritinVersion = '1.33'
-        codenarcVersion = '0.23'
+        codenarcVersion = '0.25.1'
         spockVersion = '1.0-groovy-2.4'
     }
 }
@@ -28,6 +28,7 @@ apply plugin: 'idea'
 apply from: 'gradle/idea.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'groovy'
+apply plugin: 'application'
 apply plugin: 'codenarc'
 apply plugin: 'fi.jasoft.plugin.vaadin'
 apply plugin: 'spring-boot'

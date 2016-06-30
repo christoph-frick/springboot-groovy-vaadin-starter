@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Vaadin//DTD Vaadin 7//EN" "https://raw.github.com/vaadin/gwt/master/distro-source/core/src/gwt-module.dtd">
-<module>
-        <inherits name="com.vaadin.DefaultWidgetSet" />
-	<!-- add your other widgetset components here -->
-</module>

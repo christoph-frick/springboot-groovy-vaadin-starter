@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.11'
+        gradleVaadinPluginVersion = '0.11.1'
         springBootVersion = '1.3.5.RELEASE'
         springLoadedVersion = '1.2.6.RELEASE'
     }
@@ -14,11 +14,11 @@ buildscript {
 
 ext {
     ext {
-        groovyVersion = '2.4.6'
+        groovyVersion = '2.4.7'
         gradleWrapperVersion = '2.14'
-        vaadinVersion = '7.6.4'
+        vaadinVersion = '7.6.8'
         vaadin4springVersion = '0.0.5.RELEASE'
-        viritinVersion = '1.33'
+        viritinVersion = '1.54'
         codenarcVersion = '0.25.1'
         spockVersion = '1.0-groovy-2.4'
     }

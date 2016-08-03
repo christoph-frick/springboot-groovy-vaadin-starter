@@ -3,7 +3,6 @@
 
 app:
   vaadin:
-    widgetset: 'app'
     productionMode: "true" # must be string!
 
 server:
@@ -14,7 +13,6 @@ vaadin:
     # urlMapping: /app/*
     params:
       productionMode: "${app.vaadin.productionMode}"
-      widgetset: "${app.vaadin.widgetset}"
   # see https://github.com/peholmst/vaadin4spring/issues/108#issuecomment-69953039
   static:
     servlet:
@@ -25,6 +23,8 @@ spring:
   groovy:
     template:
       check-template-location: false
+  main:
+    banner-mode: "off"
 
 ---
 

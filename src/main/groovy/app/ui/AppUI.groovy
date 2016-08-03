@@ -1,18 +1,20 @@
 package app.ui
 
 import com.vaadin.annotations.Theme
+import com.vaadin.annotations.Widgetset
 import com.vaadin.server.VaadinRequest
+import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.ui.Button
 import com.vaadin.ui.Label
 import com.vaadin.ui.UI
 import com.vaadin.ui.themes.ValoTheme
-import org.vaadin.spring.annotation.VaadinUI
 import org.vaadin.viritin.layouts.MVerticalLayout
 
 import java.time.Instant
 
-@VaadinUI
+@SpringUI
 @Theme('app')
+@Widgetset('app')
 class AppUI extends UI {
 
     @Override

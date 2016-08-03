@@ -1,7 +1,7 @@
 buildscript {
     ext {
         gradleVaadinPluginVersion = '0.11.1'
-        springBootVersion = '1.3.5.RELEASE'
+        springBootVersion = '1.4.0.RELEASE'
         springLoadedVersion = '1.2.6.RELEASE'
     }
     repositories.jcenter()
@@ -17,7 +17,7 @@ ext {
         groovyVersion = '2.4.7'
         gradleWrapperVersion = '2.14'
         vaadinVersion = '7.6.8'
-        vaadin4springVersion = '0.0.5.RELEASE'
+        vaadinSpringVersion = '1.0.0'
         viritinVersion = '1.54'
         codenarcVersion = '0.25.1'
         spockVersion = '1.0-groovy-2.4'
@@ -74,7 +74,7 @@ dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
     compile 'org.springframework.boot:spring-boot-starter-web'
     // always exclude com.vaadin packages from deps
-    compile("org.vaadin.spring:spring-boot-vaadin:${vaadin4springVersion}") { exclude group: 'com.vaadin' }
+    compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}")
     compile("org.vaadin:viritin:${viritinVersion}") { exclude group: 'com.vaadin' }
     testCompile "org.spockframework:spock-core:${spockVersion}"
     // vaadin addons are put automatically into the widgetset 

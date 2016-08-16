@@ -14,7 +14,7 @@ This uses by default:
 
  - `Spring Boot <https://github.com/spring-projects/spring-boot>`_ for ``bootRun`` and ``jar`` capabilities
 
- - `Vaadin4Spring <https://github.com/peholmst/vaadin4spring>`_ to make Spring and Vaadin play together
+ - `Vaadin Spring <https://github.com/vaadin/spring>`_ to make Spring and Vaadin play together
 
  - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ for style and widgetset compilation
 
@@ -28,7 +28,7 @@ About
 
 Like many other starters or bootstraps, this project makes some assumptions,
 what is needed and where it is.  The focus is to have an easy way to build web
-apps using newest Vaadin 7.4 and Groovy 2.4 on Java 8, run it for development
+apps using newest Vaadin 7.6 and Groovy 2.4 on Java 8, run it for development
 and build a fat jar for deployment (yet development started with earlier
 version and it is most likely that in general Vaadin 7, Groovy 2, and also
 Java 7 would work).
@@ -93,7 +93,8 @@ Code Tour
 
 :``src/main/groovy/app/Application.groovy``: ``main`` and Spring Boot setup
 
-:``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme set.
+:``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme and
+                                          widgetset.
 
 :``src/main/resources/VAADIN/themes/app/``: The theme
 
@@ -101,8 +102,9 @@ Code Tour
                                           profile ``dev`` defined.
 
 :``src/main/resources/app.gwt.xml``: The widgetset (use the same name as in
-                                     the ``build.gradle`` and the
-                                     ``application.yaml``).
+                                     the ``build.gradle`` and the for the
+                                     ``@Widgetset`` annotation in
+                                     ``AppUI.groovy``).
 
 :``src/main/resources/logback.xml``: Default logging with package ``app`` set
                                      to ``DEBUG``

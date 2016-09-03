@@ -11,13 +11,7 @@ server:
 vaadin:
   servlet:
     # urlMapping: /app/*
-    params:
-      productionMode: "${app.vaadin.productionMode}"
-  # see https://github.com/peholmst/vaadin4spring/issues/108#issuecomment-69953039
-  static:
-    servlet:
-      params:
-        productionMode: "${app.vaadin.productionMode}"
+    productionMode: "${app.vaadin.productionMode}"
 
 spring:
   groovy:

@@ -15,7 +15,7 @@ buildscript {
 ext {
     ext {
         groovyVersion = '2.4.7'
-        gradleWrapperVersion = '2.14'
+        gradleWrapperVersion = '3.0'
         vaadinVersion = '7.6.8'
         vaadinSpringVersion = '1.0.0'
         viritinVersion = '1.54'

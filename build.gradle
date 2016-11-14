@@ -1,14 +1,12 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.11.4'
-        springBootVersion = '1.4.1.RELEASE'
-        springLoadedVersion = '1.2.6.RELEASE'
+        gradleVaadinPluginVersion = '1.0'
+        springBootVersion = '1.4.2.RELEASE'
     }
     repositories.jcenter()
     dependencies {
         classpath "fi.jasoft.plugin:gradle-vaadin-plugin:$gradleVaadinPluginVersion"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-        classpath "org.springframework:springloaded:$springLoadedVersion"
     }
 }
 
@@ -16,8 +14,8 @@ ext {
     ext {
         groovyVersion = '2.4.7'
         gradleWrapperVersion = '3.1'
-        vaadinVersion = '7.6.8'
-        vaadinSpringVersion = '1.0.0'
+        vaadinVersion = '8.0.0.alpha5'
+        vaadinSpringVersion = '2.0-SNAPSHOT'
         viritinVersion = '1.54'
         codenarcVersion = '0.25.1'
         spockVersion = '1.0-groovy-2.4'
@@ -37,6 +35,7 @@ apply from: 'gradle/springboot-vaadin-fixes.gradle'
 repositories {
     jcenter()
     maven { url 'http://maven.vaadin.com/vaadin-addons' }
+    maven { url 'http://oss.sonatype.org/content/repositories/vaadin-snapshots' }
 }
 
 sourceCompatibility = 1.8
@@ -59,6 +58,7 @@ jar {
 vaadin {
 	vaadin.version = vaadinVersion
 	vaadinCompile.widgetset jar.baseName
+	vaadinCompile.userAgent "ie8,ie9,gecko1_8,safari"
 }
 
 task wrapper(type: Wrapper) {
@@ -73,6 +73,7 @@ project.codenarc {
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-devtools'
     // always exclude com.vaadin packages from deps
     compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}")
     compile("org.vaadin:viritin:${viritinVersion}") { exclude group: 'com.vaadin' }

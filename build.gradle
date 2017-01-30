@@ -1,10 +1,13 @@
 buildscript {
     ext {
-        gradleVaadinPluginVersion = '0.11.4'
-        springBootVersion = '1.4.1.RELEASE'
+        gradleVaadinPluginVersion = '1.1.2'
+        springBootVersion = '1.4.4.RELEASE'
         springLoadedVersion = '1.2.6.RELEASE'
     }
-    repositories.jcenter()
+    repositories {
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
     dependencies {
         classpath "fi.jasoft.plugin:gradle-vaadin-plugin:$gradleVaadinPluginVersion"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
@@ -14,9 +17,9 @@ buildscript {
 
 ext {
     ext {
-        groovyVersion = '2.4.7'
-        gradleWrapperVersion = '3.1'
-        vaadinVersion = '7.6.8'
+        groovyVersion = '2.4.8'
+        gradleWrapperVersion = '3.3'
+        vaadinVersion = '7.7.6'
         vaadinSpringVersion = '1.0.0'
         viritinVersion = '1.54'
         codenarcVersion = '0.25.1'
@@ -31,7 +34,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'codenarc'
 apply plugin: 'fi.jasoft.plugin.vaadin'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 apply from: 'gradle/springboot-vaadin-fixes.gradle'
 
 repositories {

@@ -17,8 +17,6 @@ vaadin {
 // pull in vaadin tasks several of the springboot tasks shall depend on
 jar.dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
 bootRun.dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
-bootRepackage.dependsOn = [jar]
-assemble.dependsOn = [bootRepackage, jar]
 
 // pass sysprops down to bootRun, so we can add them in configs in intellij
 bootRun.systemProperties = System.properties

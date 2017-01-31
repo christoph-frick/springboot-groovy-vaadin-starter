@@ -1,7 +1,7 @@
 buildscript {
     ext {
         gradleVaadinPluginVersion = '1.1.2'
-        springBootVersion = '1.4.4.RELEASE'
+        springBootVersion = '1.5.1.RELEASE'
         springLoadedVersion = '1.2.6.RELEASE'
     }
     repositories {
@@ -89,7 +89,11 @@ dependencies {
 // building the widgetset, check with `./gradlew dependencies` first.
 configurations {
 	'vaadin-client' {
-		exclude module: 'spring-boot-starter-web'
-		exclude module: 'spring-boot-vaadin'
+		resolutionStrategy {
+			// XXX does not work at all.  we end up with 1.1
+			failOnVersionConflict()
+			force 'javax.validation:validation-api:1.0.0.GA'
+			forcedModules = ['javax.validation:validation-api:1.0.0.GA',]
+		}
 	}
 }

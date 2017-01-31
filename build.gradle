@@ -83,13 +83,3 @@ dependencies {
     // vaadin addons are put automatically into the widgetset 
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
 }
-
-// Exclude all deps, that pull in newer versions of the critical libraries for
-// widgetset compilation here (e.g. validation-api).  If there are errors
-// building the widgetset, check with `./gradlew dependencies` first.
-configurations {
-	'vaadin-client' {
-		exclude module: 'spring-boot-starter-web'
-		exclude module: 'spring-boot-vaadin'
-	}
-}

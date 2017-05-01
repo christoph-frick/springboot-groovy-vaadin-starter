@@ -1,39 +1,37 @@
 //
-// vaadin plugin configs
-// 
-vaadin {
-	// debug is managed by vaadin4spring
-	vaadinRun.debug = false
-	// bend the directory to compile the themes into the build dir
-	vaadinThemeCompile.themesDirectory = 'build/resources/main/VAADIN/themes/'
-	// bend the directory to compile the widgetset into the build dir
-	vaadinCompile.outputDirectory = file('build/resources/main/')
-}
-
-//
 // springboot plugin configs
 //
 
+// https://github.com/johndevs/gradle-vaadin-plugin/issues/372#issuecomment-293927689
+configurations['vaadin-client'].resolutionStrategy {
+    dependencySubstitution {
+        substitute module('javax.validation:validation-api') with module('javax.validation:validation-api:1.0.0.GA')
+    }
+}
+
+springBoot {
+    mainClass = mainClassName
+}
+
+bootRepackage {
+    mainClass = mainClassName
+}
+
 // pull in vaadin tasks several of the springboot tasks shall depend on
-jar.dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
-bootRun.dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
-bootRepackage.dependsOn = [jar]
-assemble.dependsOn = [bootRepackage, jar]
+jar {
+    from 'src/main/webapp'
+    dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    finalizedBy bootRepackage
+}
+
+bootRun {
+    classpath += configurations['vaadin-server']
+    classpath += configurations['vaadin-client']
+    dependsOn = ["vaadinCompile", "vaadinThemeCompile"]
+}
 
 // pass sysprops down to bootRun, so we can add them in configs in intellij
 bootRun.systemProperties = System.properties
-
-// must be done last, so both plugins setup their stuff already
-project.afterEvaluate {
-	// get the runtime vaadin libs into the jar
-	jar {
-		into('lib') {
-			from configurations.'vaadin-server'
-		}
-	}
-	// pickup the runtime vaadin libs for bootRun
-	bootRun {
-		classpath += configurations.'vaadin-server'
-	}
-}
-

@@ -8,3 +8,7 @@
 /.nb-gradle-properties
 /.nb-gradle/
 /src/main/resources/app.gwt.xml
+/src/main/webapp/VAADIN/themes/app/addons.scss
+/src/main/webapp/VAADIN/themes/app/styles.css
+/src/main/webapp/VAADIN/themes/app/styles.css.gz
+/src/main/webapp/VAADIN/widgetsets/

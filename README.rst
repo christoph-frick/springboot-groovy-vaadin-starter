@@ -52,6 +52,13 @@ Checking the starter out into directory ``app`` and get rid of the origin.
    ./gradlew bootRun
    # check http://localhost:8080
 
+Build a fat jar and run it:
+
+.. code:: sh
+
+    ./gradlew jar
+    java -jar build/libs/app.jar
+
 If you are running IntelliJ IDEA, you can create the projects files with:
 
 .. code:: sh
@@ -65,7 +72,7 @@ version control is ``git``.  Second the Gradle settings are already
 added/changed to use the wrapper.  Third there are two configurations setup up
 to run and reload the project.
 
-This this is using ``springloaded`` to handle the reloading of live changes.
+This this is using ``spring-boot-devtools`` to handle the reloading of live changes.
 If you run *run dev* in debug mode you can then simply run *reload* to update
 changes to the running process, while keeping the container running as long as
 possible.

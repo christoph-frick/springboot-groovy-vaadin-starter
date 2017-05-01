@@ -28,15 +28,13 @@ About
 
 Like many other starters or bootstraps, this project makes some assumptions,
 what is needed and where it is.  The focus is to have an easy way to build web
-apps using newest Vaadin 7.6 and Groovy 2.4 on Java 8, run it for development
-and build a fat jar for deployment (yet development started with earlier
-version and it is most likely that in general Vaadin 7, Groovy 2, and also
-Java 7 would work).
+apps using Vaadin 8 and Groovy 2.4 on Java 8, run it for development and build
+a fat jar for deployment (note, that support for Vaadin 7 moved in the
+discontinued branch ``vaadin-7``).
 
 It configures a theme and a widgetset right away (both named ``app``).  The
 theme derives from Valo. There is a spring profile named ``dev`` to gather
 configs (like to tell Vaadin, it is not in production mode) for development.
-
 
 Usage
 -----
@@ -81,10 +79,9 @@ possible.
 Code Tour
 ---------
 
-:``build.gradle``: Versions and general setup of the project.  Add Vaadin
-                   widgets/addons to the ``dependencies`` and be sure to
-                   exclude their transitive dependencies (see example there),
-                   then add them to the widgetset (the ``*.gwt.xml`` file).
+:``build.gradle``: Versions and general setup of the project and the name of
+                   the widgetset used to auto-generate/-update and used with
+                   ``@Widgetset('app')`` in ``AppUI``.
 
 :``gradle/groovyOptions.groovy``: Default config for the groovy compiler.
                                   ``@CompileStatic`` is enabled by default.
@@ -103,15 +100,11 @@ Code Tour
 :``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme and
                                           widgetset.
 
-:``src/main/resources/VAADIN/themes/app/``: The theme
+:``src/main/webapp/VAADIN/themes/app/``: The theme used with ``@Theme('app')``
+                                         in ``AppUI``.
 
 :``src/main/resources/application.yaml``: Application config and Spring
                                           profile ``dev`` defined.
-
-:``src/main/resources/app.gwt.xml``: The widgetset (use the same name as in
-                                     the ``build.gradle`` and the for the
-                                     ``@Widgetset`` annotation in
-                                     ``AppUI.groovy``).
 
 :``src/main/resources/logback.xml``: Default logging with package ``app`` set
                                      to ``DEBUG``

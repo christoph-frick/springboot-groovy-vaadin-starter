@@ -5,9 +5,9 @@ plugins {
 
 ext {
     ext {
-        groovyVersion = '2.4.10'
+        groovyVersion = '2.4.11'
         gradleWrapperVersion = '3.5'
-        vaadinVersion = '8.0.5'
+        vaadinVersion = '8.0.6'
         vaadinSpringVersion = '2.0.1'
         viritinVersion = '1.54'
         codenarcVersion = '0.25.1'
@@ -26,7 +26,7 @@ apply from: 'gradle/springboot-vaadin-fixes.gradle'
 
 repositories {
     jcenter()
-    maven { url 'http://maven.vaadin.com/vaadin-addons' }
+    maven { url 'https://maven.vaadin.com/vaadin-addons' }
 }
 
 sourceCompatibility = 1.8

@@ -1,3 +1,9 @@
+buildscript {
+    repositories.jcenter()
+    dependencies {
+        classpath("org.springframework:springloaded:1.2.7.RELEASE")
+    }
+}
 plugins {
     id 'org.springframework.boot' version '1.5.3.RELEASE'
     id 'fi.jasoft.plugin.vaadin' version '1.1.11'
@@ -62,7 +68,6 @@ project.codenarc {
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
     compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-devtools'
     // always exclude com.vaadin packages from deps
     compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}")
     compile("org.vaadin:viritin:${viritinVersion}") { exclude group: 'com.vaadin' }

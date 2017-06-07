@@ -1,6 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '1.5.3.RELEASE'
-    id 'fi.jasoft.plugin.vaadin' version '1.1.10'
+    id 'fi.jasoft.plugin.vaadin' version '1.1.11'
 }
 
 ext {
@@ -9,7 +9,7 @@ ext {
         gradleWrapperVersion = '3.5'
         vaadinVersion = '8.0.6'
         vaadinSpringVersion = '2.0.1'
-        viritinVersion = '1.54'
+        viritinVersion = '1.61'
         codenarcVersion = '0.25.1'
         spockVersion = '1.0-groovy-2.4'
     }

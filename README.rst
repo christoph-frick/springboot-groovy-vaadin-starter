@@ -29,7 +29,7 @@ About
 Like many other starters or bootstraps, this project makes some assumptions,
 what is needed and where it is.  The focus is to have an easy way to build web
 apps using Vaadin 8 and Groovy 2.4 on Java 8, run it for development and build
-a fat jar/war for deployment. (Note, that support for Vaadin 7 moved in the
+a fat jar for deployment. (Note, that support for Vaadin 7 moved in the
 discontinued branch ``vaadin-7``).
 
 It configures a theme and a widgetset right away (both named ``app``).  The
@@ -50,12 +50,12 @@ Checking the starter out into directory ``app`` and get rid of the origin.
    ./gradlew bootRun
    # check http://localhost:8080
 
-Build a fat jar/war and run it:
+Build a fat jar and run it:
 
 .. code:: sh
 
     ./gradlew build
-    java -jar build/libs/app.war
+    java -jar build/libs/app.jar
 
 If you are running IntelliJ IDEA, you can create the projects files with:
 
@@ -100,8 +100,8 @@ Code Tour
 :``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme and
                                           widgetset.
 
-:``src/main/webapp/VAADIN/themes/app/``: The theme used with ``@Theme('app')``
-                                         in ``AppUI``.
+:``src/main/resources/VAADIN/themes/app/``: The theme used with
+                                            ``@Theme('app')`` in ``AppUI``.
 
 :``src/main/resources/application.yaml``: Application config and Spring
                                           profile ``dev`` defined.

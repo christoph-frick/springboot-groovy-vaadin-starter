@@ -5,15 +5,15 @@ buildscript {
     }
 }
 plugins {
-    id 'org.springframework.boot' version '1.5.3.RELEASE'
-    id 'fi.jasoft.plugin.vaadin' version '1.1.11'
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+    id 'com.devsoap.plugin.vaadin' version '1.2.1'
 }
 
 ext {
     ext {
-        groovyVersion = '2.4.11'
-        gradleWrapperVersion = '3.5'
-        vaadinVersion = '8.0.6'
+        groovyVersion = '2.4.12'
+        gradleWrapperVersion = '4.0.1'
+        vaadinVersion = '8.0.7'
         vaadinSpringVersion = '2.0.1'
         viritinVersion = '1.61'
         codenarcVersion = '0.25.1'
@@ -40,11 +40,11 @@ compileGroovy {
 	groovyOptions.configurationScript = file("gradle/groovyOptions.groovy")
 }
 
-war {
+jar {
     baseName = 'app'
     version = null // no version in the filename
     manifest {
-        attributes 'Main-Class': mainClassName // Allow to run with `java -jar app.war`
+        attributes 'Main-Class': mainClassName // Allow to run with `java -jar app.jar`
     }
 }
 

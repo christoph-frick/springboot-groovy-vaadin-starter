@@ -5,19 +5,19 @@ buildscript {
     }
 }
 plugins {
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
-    id 'com.devsoap.plugin.vaadin' version '1.2.2'
+    id 'org.springframework.boot' version '1.5.8.RELEASE'
+    id 'com.devsoap.plugin.vaadin' version '1.2.5'
 }
 
 ext {
     ext {
         groovyVersion = '2.4.12'
-        gradleWrapperVersion = '4.1'
-        vaadinVersion = '8.1.2'
+        gradleWrapperVersion = '4.2.1'
+        vaadinVersion = '8.1.5'
         vaadinSpringVersion = '2.0.1'
         viritinVersion = '1.61'
         codenarcVersion = '0.27.0'
-        spockVersion = '1.0-groovy-2.4'
+        spockVersion = '1.1-groovy-2.4'
     }
     mainClassName = "app.Application" 
 }

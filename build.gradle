@@ -1,19 +1,19 @@
 buildscript {
     repositories.jcenter()
     dependencies {
-        classpath("org.springframework:springloaded:1.2.7.RELEASE")
+        classpath("org.springframework:springloaded:1.2.8.RELEASE")
     }
 }
 plugins {
-    id 'org.springframework.boot' version '1.5.8.RELEASE'
-    id 'com.devsoap.plugin.vaadin' version '1.2.5'
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+    id 'com.devsoap.plugin.vaadin' version '1.2.6'
 }
 
 ext {
     ext {
-        groovyVersion = '2.4.12'
-        gradleWrapperVersion = '4.2.1'
-        vaadinVersion = '8.1.5'
+        groovyVersion = '2.4.13'
+        gradleWrapperVersion = '4.3.1'
+        vaadinVersion = '8.1.7'
         vaadinSpringVersion = '2.0.1'
         viritinVersion = '1.61'
         codenarcVersion = '0.27.0'

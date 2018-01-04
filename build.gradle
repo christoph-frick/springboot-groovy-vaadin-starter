@@ -16,7 +16,7 @@ ext {
     ext {
         groovyVersion = '2.4.13'
         gradleWrapperVersion = '4.3.1'
-        vaadinVersion = '8.1.7'
+        vaadinVersion = '8.2.0'
         vaadinSpringVersion = '2.0.1'
         viritinVersion = '1.61'
         codenarcVersion = '0.27.0'

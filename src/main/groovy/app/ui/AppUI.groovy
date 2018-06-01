@@ -21,9 +21,8 @@ class AppUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         def layout = new VerticalLayout()
 
-        layout.addComponent(new Label('Hello Vaadin').with {
-            setStyleName(ValoTheme.LABEL_H1)
-            it
+        layout.addComponent(new Label('Hello Vaadin').tap {
+            styleName = ValoTheme.LABEL_H1
         })
 
         // def editor = new org.vaadin.openesignforms.ckeditor.CKEditorTextField()

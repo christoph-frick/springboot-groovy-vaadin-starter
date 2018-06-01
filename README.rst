@@ -18,10 +18,6 @@ This uses by default:
 
  - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ for style and widgetset compilation
 
- - `Spock <https://github.com/spockframework/spock>`_ for tests
-
- - `CodeNarc <https://github.com/CodeNarc/CodeNarc>`_ to ensure code quality
-
 
 About
 =====
@@ -57,14 +53,6 @@ Build a fat jar and run it:
     ./gradlew build
     java -jar build/libs/app.jar
 
-If you are running IntelliJ IDEA, you can create the projects files with:
-
-.. code:: sh
-
-   ./gradlew idea
-
-This sets up a ``.ipr`` file you can open with IDEA.
-
 The created project has some additional configurations.  First the default for the
 version control is ``git``.  Second the Gradle settings are already
 added/changed to use the wrapper.  Third there are two configurations setup up
@@ -83,18 +71,6 @@ Code Tour
                    the widgetset used to auto-generate/-update and used with
                    ``@Widgetset('app')`` in ``AppUI``.
 
-:``gradle/groovyOptions.groovy``: Default config for the groovy compiler.
-                                  ``@CompileStatic`` is enabled by default.
-
-:``gradle/springboot-vaadin-fixes.gradle``: All configs to make both the
-                                            Springboot and the Vaadin Gradle
-                                            plug-in play nicely together.
-
-:``gradle/idea.gradle``: Config for the IDEA project (see above)
-
-:``config/codenarc/ruleset.groovy``: Default ruleset with few commented rules
-                                     resulting in errors.
-
 :``src/main/groovy/app/Application.groovy``: ``main`` and Spring Boot setup
 
 :``src/main/groovy/app/ui/AppUI.groovy``: Trivial UI with the theme and
@@ -108,3 +84,6 @@ Code Tour
 
 :``src/main/resources/logback.xml``: Default logging with package ``app`` set
                                      to ``DEBUG``
+
+:``gradle/groovyOptions.groovy``: (Optional) Default config for the groovy compiler.
+                                  ``@CompileStatic`` is enabled by default.

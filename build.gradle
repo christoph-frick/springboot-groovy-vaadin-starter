@@ -57,7 +57,6 @@ bootRun.systemProperties = System.properties // pass sysprops down to bootRun, s
 vaadin {
 	vaadin.version = vaadinVersion
 	vaadinCompile.widgetset 'app' // name of the widgetset (see @Widgetset in the UI)
-	vaadinCompile.outputDirectory = file('build/resources/main/')
 }
 
 task wrapper(type: Wrapper) {

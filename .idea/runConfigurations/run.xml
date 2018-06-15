@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="app_main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="app.Application" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndTriggerFile" />
+    <method>
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="vaadinCompile" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

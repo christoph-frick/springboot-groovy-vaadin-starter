@@ -74,6 +74,6 @@ dependencies {
     // always exclude com.vaadin packages from deps
     compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}")
     testCompile("org.spockframework:spock-core:${spockVersion}")
-    // vaadin addons are put automatically into the widgetset 
+    // vaadin addons are put automatically into the widgetset
     // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
 }

@@ -18,6 +18,8 @@ This uses by default:
 
  - `Gradle Vaadin Plugin <https://github.com/johndevs/gradle-vaadin-plugin>`_ for style and widgetset compilation
 
+ - `Spock <https://github.com/spockframework/spock>`_ for tests
+
 
 About
 =====

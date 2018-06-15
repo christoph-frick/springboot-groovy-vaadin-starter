@@ -1,13 +1,10 @@
 package app
 
-import groovy.transform.CompileStatic
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.web.support.SpringBootServletInitializer
 
 @SpringBootApplication
-@CompileStatic
-class Application extends SpringBootServletInitializer {
+class Application {
 
     static void main(String[] args) throws Exception {
         def app = new SpringApplication(Application)

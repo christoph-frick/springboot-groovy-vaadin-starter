@@ -21,10 +21,13 @@ class AppUI extends UI {
             },
             input = new TextField("Greet whom?").tap {
                 value = 'World'
+                id = 'input'
             },
             new Button('Click to greet', {
-                output.value = "Hello ${input.value ?: "Vaadin"}"
-            } as Button.ClickListener)
+                output.value = "Hello ${input.value ?: "World"}"
+            } as Button.ClickListener).tap{
+                id = 'trigger'
+            }
         ))
     }
 

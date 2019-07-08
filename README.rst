@@ -20,8 +20,6 @@ This uses by default:
 
  - `Spock <https://github.com/spockframework/spock>`_ for tests
 
- - `CodeNarc <https://github.com/CodeNarc/CodeNarc>`_ to ensure code quality
-
 
 About
 =====
@@ -57,19 +55,6 @@ Build a fat jar and run it:
     ./gradlew build
     java -jar build/libs/app.jar
 
-If you are running IntelliJ IDEA, you can create the projects files with:
-
-.. code:: sh
-
-   ./gradlew idea
-
-This sets up a ``.ipr`` file you can open with IDEA.
-
-The created project has some additional configurations.  First the default for the
-version control is ``git``.  Second the Gradle settings are already
-added/changed to use the wrapper.  Third there are two configurations setup up
-to run and reload the project.
-
 This this is using ``spring-boot-devtools`` to handle the reloading of live changes.
 If you run *run dev* in debug mode you can then simply run *reload* to update
 changes to the running process, while keeping the container running as long as
@@ -85,15 +70,6 @@ Code Tour
 
 :``gradle/groovyOptions.groovy``: Default config for the groovy compiler.
                                   ``@CompileStatic`` is enabled by default.
-
-:``gradle/springboot-vaadin-fixes.gradle``: All configs to make both the
-                                            Springboot and the Vaadin Gradle
-                                            plug-in play nicely together.
-
-:``gradle/idea.gradle``: Config for the IDEA project (see above)
-
-:``config/codenarc/ruleset.groovy``: Default ruleset with few commented rules
-                                     resulting in errors.
 
 :``src/main/groovy/app/Application.groovy``: ``main`` and Spring Boot setup
 

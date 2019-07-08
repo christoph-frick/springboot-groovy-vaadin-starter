@@ -1,39 +1,19 @@
-buildscript {
-    repositories {
-        jcenter()
-        maven { url 'https://repo.spring.io/snapshot' }
-    }
-    dependencies {
-        classpath("org.springframework:springloaded:1.2.9.BUILD-SNAPSHOT")
-    }
-}
 plugins {
-    id 'org.springframework.boot' version '1.5.10.RELEASE'
-    id 'com.devsoap.plugin.vaadin' version '1.3.1'
-    id 'idea'
-    id 'eclipse'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'com.devsoap.plugin.vaadin' version '1.4.1'
     id 'groovy'
-    id 'codenarc'
 }
 
-ext {
-    ext {
-        groovyVersion = '2.4.13'
-        gradleWrapperVersion = '4.5.1'
-        vaadinVersion = '8.3.1'
-        vaadinSpringVersion = '3.0.0'
-        codenarcVersion = '0.27.0'
-        spockVersion = '1.1-groovy-2.4'
-    }
-    mainClassName = "app.Application" 
-}
-
-apply from: 'gradle/idea.gradle'
+apply plugin: 'io.spring.dependency-management'
 
 repositories {
+    mavenLocal()
     jcenter()
     maven { url 'https://maven.vaadin.com/vaadin-addons' }
 }
+
+group = 'com.example'
+version = "0.0.1"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -42,12 +22,8 @@ compileGroovy {
 	groovyOptions.configurationScript = file("gradle/groovyOptions.groovy")
 }
 
-jar {
-    baseName = 'app'
+bootJar {
     version = null // no version in the filename
-    manifest {
-        attributes 'Main-Class': mainClassName // Allow to run with `java -jar app.jar`
-    }
 }
 
 bootRun.systemProperties = System.properties // pass sysprops down to bootRun, so we can add them in configs in intellij
@@ -55,24 +31,19 @@ bootRun.systemProperties = System.properties // pass sysprops down to bootRun, s
 vaadin {
 	vaadin.version = vaadinVersion
 	vaadinCompile.widgetset 'app' // name of the widgetset (see @Widgetset in the UI)
-	vaadinCompile.outputDirectory = file('build/resources/main/')
+    vaadinCompile.outputDirectory = file('build/resources/main/')
+    vaadinThemeCompile.themesDirectory = file('build/resources/main/VAADIN/themes')
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = gradleWrapperVersion
-}
-
-project.codenarc {
-	toolVersion = codenarcVersion
-	configFile = new File('config/codenarc/ruleset.groovy')
-}
+ext['groovy.version'] = groovyVersion
 
 dependencies {
-    compile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.codehaus.groovy:groovy"
     // always exclude com.vaadin packages from deps
-    compile("com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}")
+    compile "com.vaadin:vaadin-spring-boot-starter:${vaadinSpringVersion}"
     testCompile "org.spockframework:spock-core:${spockVersion}"
+    runtimeOnly "org.springframework.boot:spring-boot-devtools"
     // vaadin addons are put automatically into the widgetset 
-    // compile('org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3') { exclude group:'com.vaadin' }
+    // compile("org.vaadin.addons:ckeditor-wrapper-for-vaadin:7.9.3") { exclude group:'com.vaadin' }
 }

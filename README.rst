@@ -1,3 +1,5 @@
+No longer needed, due to the EOL of Vaadin 8 - For Flow see https://codeberg.org/cfrick/vaadin-flow-springboot-gradle-bootstrap
+
 =================================
 Spring Boot Groovy Vaadin Starter
 =================================
